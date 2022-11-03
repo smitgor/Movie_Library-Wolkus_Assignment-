@@ -10,7 +10,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5001;
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
 
 var url = "mongodb+srv://dbsmit:DBSMIT@cluster0.ff23x.mongodb.net/wolkus_users?retryWrites=true&w=majority";
