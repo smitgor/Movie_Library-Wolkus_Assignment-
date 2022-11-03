@@ -26,8 +26,15 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String
 })
-
 const User = new mongoose.model("User", userSchema)
+
+const playlistSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    private: Boolean,
+    movies: [String]
+})
+const Playlist = new mongoose.model("Playlist", playlistSchema)
 
 
 app.post("/login", (req, res)=> {
@@ -68,7 +75,60 @@ app.post("/register", (req, res)=> {
         }
     })
 });
+app.post("/createPlaylist", (req, res)=> {
+    const { name, email, private, movies} = req.body
+    console.log(name, email, private, movies  )
+    Playlist.findOne({ email: email, name:name}, (err, playlist) => {
+        if(playlist){
+            res.send({message: "Playlist already created"})
+        } else {
+            const playlist = new Playlist({
+                name,
+                email,
+                private,
+                movies
+            })
+            playlist.save(err => {
+                if(err) {
+                    res.send(err)
+                } else {
+                    res.send( { message: "Successfully Created Playlist" })
+                }
+            })
+        }
+    })
+});
 
+app.get('/getPlaylistByUser/:email', (req, res) => {    
+    const { email} = req.params
+    console.log(req.params);
+    Playlist.find({ email: email}, (err, playlist) => {
+        if(playlist){
+            res.send({response: "true", playlist: playlist})
+        } else {
+            res.send({response: "No playlist found"})
+        }
+    })
+});
+
+app.post('/addToPlaylist', (req, res) => {
+    const { email, name, movie} = req.body
+    console.log(req.body);
+    Playlist.findOne({ email: email, name: name}, (err, playlist) => {
+        if(playlist){
+            playlist.movies.push(movie)
+            playlist.save(err => {
+                if(err) {
+                    res.send(err)
+                } else {
+                    res.send( { message: "Successfully Added to Playlist" })
+                }
+            })
+        } else {
+            res.send({response: "No playlist found"})
+        }
+    })
+});
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
