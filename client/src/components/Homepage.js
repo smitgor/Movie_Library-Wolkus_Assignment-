@@ -32,12 +32,12 @@ const Homepage = ({setLoginUser, user}) => {
     }
 
     return (
-        <div className="homepage bg-gray-400 min-h-screen">
+        <div className="homepage  min-h-screen">
             <Header setLoginUser={setLoginUser} user={user} setMovies={setMovies}/>
             <div className="border-b-2 flex items-center w-1/2 my-4 mx-8 border-black">
                 <input 
                     type="text" 
-                    className="w-96 h-10 pl-5 flex-grow bg-gray-400 rounded-full focus:outline-none placeholder:text-black" 
+                    className="w-96 h-10 pl-5 flex-grow  rounded-full focus:outline-none placeholder:text-black" 
                     onChange={handleInput} 
                     onKeyUp={handleKeyPress.bind(this)}
                     placeholder="Search Any Movie" 

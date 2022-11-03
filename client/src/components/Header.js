@@ -17,9 +17,9 @@ const Header = ({setLoginUser, user, setMovies}) => {
                 <div class="mr-10 text-blue-900 hover:text-indigo-600 cursor-pointer" onClick={() => navigate("/playlist")}>
                     Playlist
                 </div>
-                <div class="text-blue-900 hover:text-indigo-600 cursor-pointer" onClick={() => navigate("/about")}>
+                {/* <div class="text-blue-900 hover:text-indigo-600 cursor-pointer" onClick={() => navigate("/about")}>
                     About
-                </div>
+                </div> */}
             </div>
 
             <div className=" flex items-center rounded-full">

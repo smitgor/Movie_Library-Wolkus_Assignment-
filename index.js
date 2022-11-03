@@ -129,6 +129,19 @@ app.post('/addToPlaylist', (req, res) => {
         }
     })
 });
+
+app.get('/getPlaylistById/:_id', (req, res) => {
+    const { _id} = req.params
+    var id= mongoose.Types.ObjectId(_id);
+    console.log(req.params);
+    Playlist.findOne({ _id: id}, (err, playlist) => {
+        if(playlist){
+            res.send({response: "true", playlist: playlist})
+        } else {
+            res.send({response: "No playlist found"})
+        }
+    })
+});
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });

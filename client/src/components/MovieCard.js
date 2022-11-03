@@ -37,7 +37,7 @@ const MovieCard = ({movies, loading, user}) => {
     if(loading === -1){
         return (
             <>
-            home page
+                
             </>
         )
     }

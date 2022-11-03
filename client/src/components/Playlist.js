@@ -12,7 +12,7 @@ const Playlist = ({user}) => {
     })
     const [userPlaylist, setUserPlaylist] = useState([])
     const [checked, setChecked] = useState(false);
-    const [findName, setFindName] = useState("");
+    const [findID, setFindName] = useState("");
 
     useEffect(() => {
         axios.get(`/getPlaylistByUser/${user.email}`, {
@@ -50,6 +50,15 @@ const Playlist = ({user}) => {
             console.log(res.data);
         })
     }
+    const findPlayList = () => {
+        axios.get(`/getPlaylistById/${findID}`)
+        .then(res => {
+            
+            console.log(res.data);
+        })
+    }
+
+
     if(userPlaylist.length === 0) {
         return (
             <>
@@ -92,7 +101,7 @@ const Playlist = ({user}) => {
                     onChange={handleFindChange}
                     placeholder="Playlist ID" 
                 />
-                <button onClick={createPlaylist} className="border-2 bg-green-400 border-green-500 px-2 py-1  mx-2 rounded-md" >Find Playlist</button>
+                <button onClick={findPlayList} className="border-2 bg-green-400 border-green-500 px-2 py-1  mx-2 rounded-md" >Find Playlist</button>
             </div>
 
             <div className="mt-10 mx-2 sm:mx-5 md:mx-10 grid ">
