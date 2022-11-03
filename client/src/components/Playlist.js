@@ -67,9 +67,37 @@ const Playlist = ({user , setLoginUser}) => {
             <div>
             
             <Header setLoginUser={Logout} user={user}/>
-            <input name="name" placeholder="Playlist name" onChange={handleChange}/>
-            <button onClick={createPlaylist} className="border-2 border-black px-2 py-1 mt-4 mx-2 rounded-md" >create</button>
-            <h1>No Playlist</h1>
+            <div className=" flex items-center w-2/3 my-4 mx-8 border-black">
+                <input 
+                    type="text" 
+                    name="name"
+                    className="border-b-2 sm:w-96 h-10 pl-5 flex-grow  focus:outline-none placeholder:text-black" 
+                    onChange={handleChange}
+                    placeholder="Playlist name" 
+                />
+                <div className="ml-8 flex items-center">
+                    <input 
+                        type="checkbox" 
+                        name="private"
+                        className="border-b-2 mx-2h-4 pl-5 flex-grow  focus:outline-none placeholder:text-black" 
+                        checked={checked}
+                        onChange={handleCheckChange}
+                        />
+                    <p className="px-2">Private</p>
+                </div>
+
+                <button onClick={createPlaylist} className="border-2 bg-green-400 border-green-500 px-2 py-1  mx-2 rounded-md" >create</button>
+            </div>
+            <div className=" flex items-center w-2/3 my-4 mx-8 border-black">
+                <input 
+                    type="text" 
+                    name="name"
+                    className="border-b-2 sm:w-96 h-10 pl-5 flex-grow  focus:outline-none placeholder:text-black" 
+                    onChange={handleFindChange}
+                    placeholder="Playlist ID" 
+                />
+                <button onClick={findPlayList} className="border-2 bg-green-400 border-green-500 px-2 py-1  mx-2 rounded-md" >Find Playlist</button>
+            </div><h1>No Playlist</h1>
             </div>
         )
     }
