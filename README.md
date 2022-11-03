@@ -9,6 +9,7 @@ cd Movie_Library-Wolkus_Assignment-
 
 ## To run Server
 ```
+npm i
 node index.js
 ```
 
@@ -16,6 +17,7 @@ node index.js
 Open other terminal in Movie_Library-Wolkus_Assignment- folder
 ```
 cd client
+npm i
 npm run start
 ```
 
