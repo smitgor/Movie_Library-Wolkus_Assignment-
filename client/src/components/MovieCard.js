@@ -75,7 +75,7 @@ const MovieCard = ({movies, loading, user}) => {
                 <span class="font-bold">{movies.Runtime} | {
                     movies.Genre?.split(",").map((genre, index) => {
                         return (
-                            <span key={index} className="ml-1 bg-white text-sm p-1 border text-gray-800 border-black rounded-md">{genre} </span>
+                            <span key={index} className="px-2 py-1 mr-2  text-base rounded-full text-gray-500 border border-gray-500 undefined ">{genre} </span>
                         )
                     }
                     )

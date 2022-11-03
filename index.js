@@ -31,7 +31,7 @@ const User = new mongoose.model("User", userSchema)
 const playlistSchema = new mongoose.Schema({
     name: String,
     email: String,
-    private: Boolean,
+    private: String,
     movies: [String]
 })
 const Playlist = new mongoose.model("Playlist", playlistSchema)
