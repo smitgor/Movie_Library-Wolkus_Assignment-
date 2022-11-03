@@ -144,9 +144,6 @@ app.get('/getPlaylistById/:_id', (req, res) => {
     })
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-});
 app.listen(5001,() => {
     console.log("server running on port", PORT);
 });
