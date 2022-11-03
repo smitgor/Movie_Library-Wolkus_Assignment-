@@ -3,7 +3,7 @@ import Header from "./Header";
 import axios from "axios";
 import PlaylistCard from "./PlaylistCard";
 
-const Playlist = ({user}) => {
+const Playlist = ({user , setLoginUser}) => {
     const [ newPlaylist, setNewPlaylist] = useState({
         email:user.email,
         name:"",
@@ -13,6 +13,9 @@ const Playlist = ({user}) => {
     const [userPlaylist, setUserPlaylist] = useState([])
     const [checked, setChecked] = useState(false);
     const [findID, setFindName] = useState("");
+    const Logout = () => {
+        setLoginUser({});
+    }
 
     useEffect(() => {
         axios.get(`/getPlaylistByUser/${user.email}`, {
@@ -61,17 +64,18 @@ const Playlist = ({user}) => {
 
     if(userPlaylist.length === 0) {
         return (
-            <>
-            <Header />
+            <div>
+            
+            <Header setLoginUser={Logout} user={user}/>
             <input name="name" placeholder="Playlist name" onChange={handleChange}/>
             <button onClick={createPlaylist} className="border-2 border-black px-2 py-1 mt-4 mx-2 rounded-md" >create</button>
             <h1>No Playlist</h1>
-            </>
+            </div>
         )
     }
     return (
         <div>
-            <Header />
+            <Header setLoginUser={Logout} user={user}/>
             <div className=" flex items-center w-2/3 my-4 mx-8 border-black">
                 <input 
                     type="text" 

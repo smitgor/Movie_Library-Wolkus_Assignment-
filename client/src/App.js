@@ -4,7 +4,6 @@ import Login from "./components/Login"
 import Register from "./components/Register"
 import Playlist from "./components/Playlist"
 import About from "./components/About"
-import PlaylistWithId from './components/PlayListWithId'
 import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
 import { useState } from 'react';
 
@@ -26,9 +25,8 @@ function App() {
           </Route>
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/register" element={<Register />}></Route>
-          <Route exact path="/Playlist/:id" element={<PlaylistWithId />}></Route>
           <Route exact path="/playlist" 
-            element={user && user._id ? <Playlist user={user} /> : <Login setLoginUser={setLoginUser}/>}
+            element={user && user._id ? <Playlist setLoginUser={setLoginUser} user={user} /> : <Login setLoginUser={setLoginUser}/>}
             ></Route>
           <Route exact path="/about" element={<About />}></Route>
         </Routes >

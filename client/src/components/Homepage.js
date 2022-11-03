@@ -33,7 +33,7 @@ const Homepage = ({setLoginUser, user}) => {
 
     return (
         <div className="homepage  min-h-screen">
-            <Header setLoginUser={setLoginUser} user={user} setMovies={setMovies}/>
+            <Header setLoginUser={setLoginUser} user={user}/>
             <div className="border-b-2 flex items-center w-1/2 my-4 mx-8 border-black">
                 <input 
                     type="text" 

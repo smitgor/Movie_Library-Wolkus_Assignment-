@@ -2,7 +2,7 @@ import {React, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
-const Header = ({setLoginUser, user, setMovies}) => {
+const Header = ({setLoginUser, user}) => {
 
     const navigate = useNavigate();
     
