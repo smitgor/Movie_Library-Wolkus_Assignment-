@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 app.use(express.json());
@@ -9,7 +10,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5001;
 
-// app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 
 var url = "mongodb+srv://dbsmit:DBSMIT@cluster0.ff23x.mongodb.net/wolkus_users?retryWrites=true&w=majority";
@@ -142,9 +143,10 @@ app.get('/getPlaylistById/:_id', (req, res) => {
         }
     })
 });
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-  });
+
+app.get('*', (req, res) => {
+res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 app.listen(5001,() => {
     console.log("server running on port", PORT);
 });
